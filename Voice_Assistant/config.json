@@ -1,0 +1,19 @@
+{
+  "openweathermap_api_key": "PASTE_YOUR_API_KEY_HERE",
+  "email": {
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "sender_address": "your_test_account@gmail.com",
+    "sender_app_password": "PASTE_YOUR_APP_PASSWORD_HERE"
+  },
+  "custom_commands": {
+    "tell me a joke": "Why do programmers prefer dark mode? Because light attracts bugs!",
+    "who made you": "I was built as part of a Python internship project."
+  },
+  "knowledge_base": {
+    "what is python": "Python is a high-level, general-purpose programming language known for readable syntax.",
+    "who is the prime minister of india": "I don't have live data for that. Please check a news source for the current answer.",
+    "what is the capital of india": "The capital of India is New Delhi.",
+    "what is an api": "An API, or Application Programming Interface, lets two programs talk to each other using a defined set of rules."
+  }
+}
