@@ -38,8 +38,8 @@
   </form>
 
   <script>
-    const roomName = {{ room_name | tojson }};
-    const username = {{ username | tojson }};
+    const roomName = "{{ room_name | escapejs }}";
+    const currentUsername = "{{ username | escapejs }}";
 
     const socket = io();
     const messagesList = document.getElementById("messages");
@@ -53,7 +53,7 @@
     }
 
     socket.on("connect", () => {
-      socket.emit("join", { room: roomName, username: username });
+      socket.emit("join", { room: roomName, username: currentUsername });
     });
 
     socket.on("system_message", (data) => {
@@ -73,7 +73,7 @@
 
       // In-app / desktop notification for new messages when the
       // window/tab is not focused (and it's not our own message).
-      if (document.hidden && data.username !== username) {
+      if (document.hidden && data.username !== currentUsername) {
         if ("Notification" in window && Notification.permission === "granted") {
           new Notification(`${data.username} in #${roomName}`, { body: data.message });
         }
@@ -84,7 +84,7 @@
       e.preventDefault();
       const text = input.value.trim();
       if (!text) return;
-      socket.emit("send_message", { room: roomName, username: username, message: text });
+      socket.emit("send_message", { room: roomName, username: currentUsername, message: text });
       input.value = "";
     });
 
